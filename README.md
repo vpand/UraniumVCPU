@@ -12,12 +12,12 @@ UraniumVM framework for arm/arm64/x86/x86_64 on Android/iOS/macOS.
 |x86_64|Yes|No|Yes|
 
 ### VM API
-```
+```C
 // run function 'fn' on UraniumVCPU with 'ctx'
 // return value is r[0].sx/rax
 long uvm_run_interp(const void *fn, const uvm_context_t *ctx);
 ```
-```
+```C
 // this api is used to make target's function pointer under your control
 //
 // make a wrapper for function 'fn' with 'usrctx','callback'
@@ -31,7 +31,7 @@ const void *uvm_make_callee(const void *fn, void *usrctx,
 
 
 ### Core Structure
-```
+```C
 // opcode type for callback args
 typedef enum uvm_optype_t {
   vcop_read,    // memory read
@@ -46,7 +46,7 @@ typedef enum uvm_optype_t {
   vcop_ifetch,  // interpreter fetch instruction
 } uvm_optype_t;
 ```
-```
+```C
 // callback args
 typedef struct uvm_callback_args_t {
   // your own context passed for uvm_run_interp/uvm_make_callee
